@@ -4,7 +4,6 @@ const MongoLib = require("../MongoLib");
 
 var HandlerGenerator = require("../handlegenerator.js");
 var middleware = require("../middleware.js");
-var db;
 
 
 HandlerGenerator = new HandlerGenerator();
@@ -13,5 +12,7 @@ HandlerGenerator = new HandlerGenerator();
 router.get('/', middleware.checkToken, HandlerGenerator.index);
 
 router.post( '/login', HandlerGenerator.login);
+
+
 
 module.exports = router;

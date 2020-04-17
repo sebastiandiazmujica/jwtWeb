@@ -1,14 +1,26 @@
 let jwt = require( 'jsonwebtoken' );
 let config = require( './config' );
+const MongoLib = require('./MongoLib');
 
 // Clase encargada de la creación del token
 class HandlerGenerator {
+
+ 
 
   login( req, res ) {
     
     // Extrae el usuario y la contraseña especificados en el cuerpo de la solicitud
     let username = req.body.username;
     let password = req.body.password;
+    let user;
+
+    MongoLib.getDatabase(db => {
+      MongoLib.findDocuments(db, users =>{
+        console.log(users)
+      });
+    });
+
+
     
     // Este usuario y contraseña, en un ambiente real, deben ser traidos de la BD
     let mockedUsername = 'admin';
@@ -56,7 +68,6 @@ class HandlerGenerator {
   }
 
   index( req, res ) {
-    
     // Retorna una respuesta exitosa con previa validación del token
     res.json( {
       success: true,
