@@ -10,7 +10,7 @@ HandlerGenerator = new HandlerGenerator();
 
 /* GET home page. */
 router.get('/', middleware.checkToken, HandlerGenerator.index);
-
+router.post('/createUser', middleware.checkToken,HandlerGenerator.createUser);
 router.post( '/login', HandlerGenerator.login);
 
 
